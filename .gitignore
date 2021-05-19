@@ -108,3 +108,6 @@ build/
 
 # Windows shortcuts
 *.lnk
+
+# nohup
+nohup.out
