@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.utils.Constants;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +14,9 @@ import com.example.demo.models.Customer;
 public class CustomerController {
     private final RestTemplate rest = new RestTemplate();
 
+    @Value("${backend.endpoint.url}")
+    public String BE_ENDPOINT;
+
     @GetMapping
     public String Init(Model model) {
         Customer customer = rest.getForObject("http://localhost:9999/customer/{id}", Customer.class, Module.Instance.IDCustomer);
@@ -23,7 +26,7 @@ public class CustomerController {
 
     @GetMapping("/info")
     public String ShowInfo(Model model) {
-        Customer customer = rest.getForObject(Constants.CUSTOMER_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
+        Customer customer = rest.getForObject(BE_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
         model.addAttribute("customer", customer);
         return "frontendhtml/customer_create_info";
     }
@@ -36,21 +39,21 @@ public class CustomerController {
 
     @GetMapping("/borrow")
     public String ShowBorrow(Model model) {
-        Customer customer = rest.getForObject(Constants.CUSTOMER_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
+        Customer customer = rest.getForObject(BE_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
         model.addAttribute("customer", customer);
         return "frontendhtml/customer_borrow";
     }
 
     @GetMapping("/pay")
     public String ShowPay(Model model) {
-        Customer customer = rest.getForObject(Constants.CUSTOMER_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
+        Customer customer = rest.getForObject(BE_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
         model.addAttribute("customer", customer);
         return "frontendhtml/customer_paymentborrow";
     }
 
     @GetMapping("/paydetail")
     public String ShowPayDetail(Model model) {
-        Customer customer = rest.getForObject(Constants.CUSTOMER_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
+        Customer customer = rest.getForObject(BE_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
         model.addAttribute("customer", customer);
         return "frontendhtml/customer_paymentborrow_details";
     }
