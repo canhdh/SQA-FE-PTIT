@@ -19,14 +19,14 @@ public class CustomerController {
 
     @GetMapping
     public String Init(Model model) {
-        Customer customer = rest.getForObject("http://localhost:9999/customer/{id}", Customer.class, Module.Instance.IDCustomer);
+        Customer customer = rest.getForObject(BE_ENDPOINT + "/customer/{id}", Customer.class, Module.Instance.IDCustomer);
         model.addAttribute("customer", customer);
         return "/frontendhtml/customer_index";
     }
 
     @GetMapping("/info")
     public String ShowInfo(Model model) {
-        Customer customer = rest.getForObject(BE_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
+        Customer customer = rest.getForObject(BE_ENDPOINT + "/customer/{id}", Customer.class, Module.Instance.IDCustomer);
         model.addAttribute("customer", customer);
         return "frontendhtml/customer_create_info";
     }
@@ -39,21 +39,21 @@ public class CustomerController {
 
     @GetMapping("/borrow")
     public String ShowBorrow(Model model) {
-        Customer customer = rest.getForObject(BE_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
+        Customer customer = rest.getForObject(BE_ENDPOINT + "/customer/{id}", Customer.class, Module.Instance.IDCustomer);
         model.addAttribute("customer", customer);
         return "frontendhtml/customer_borrow";
     }
 
     @GetMapping("/pay")
     public String ShowPay(Model model) {
-        Customer customer = rest.getForObject(BE_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
+        Customer customer = rest.getForObject(BE_ENDPOINT + "/customer/{id}", Customer.class, Module.Instance.IDCustomer);
         model.addAttribute("customer", customer);
         return "frontendhtml/customer_paymentborrow";
     }
 
     @GetMapping("/paydetail")
     public String ShowPayDetail(Model model) {
-        Customer customer = rest.getForObject(BE_ENDPOINT + "/{id}", Customer.class, Module.Instance.IDCustomer);
+        Customer customer = rest.getForObject(BE_ENDPOINT + "/customer/{id}", Customer.class, Module.Instance.IDCustomer);
         model.addAttribute("customer", customer);
         return "frontendhtml/customer_paymentborrow_details";
     }
