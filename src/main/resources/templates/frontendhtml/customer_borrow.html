@@ -58,12 +58,12 @@
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <img alt="" src="images/avart.png">
-                        <span class="username" th:text="${customer.getName()}"></span>
+                        <span class="username" th:text="${customer.getUsername()}"></span>
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu extended logout">
                         <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                        <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                        <li><a href="/user/login"><i class="fa fa-key"></i> Log Out</a></li>
                     </ul>
                 </li>
                 <!-- user login dropdown end -->
@@ -134,13 +134,13 @@
                                               novalidate="novalidate">
                                             <div class="col-sm-12 col-md-12 col-xs-12 ">
                                                 <div class="form-group ">
-                                                    <label for="firstname" class="control-label col-lg-3"><span
+                                                    <label for="purpose" class="control-label col-lg-3"><span
                                                             class="validate">*</span>Mục đích vay vốn</label>
                                                     <div class="col-lg-6">
                                                         <div class="compose-editor">
                                                             <textarea class="wysihtml5 form-control"
                                                                       rows="9"></textarea>
-                                                            <input type="file" class="default">
+                                                            <input id="purpose" type="text" class="default">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -163,11 +163,9 @@
                                                         </button>
                                                     </div>
                                                     <div id="drop-1" class="collapse">
-                                                        <label class="col-sm-3 control-label col-lg-3"
-                                                               for="inputSuccess"><span class="validate">*</span>Tài sản
-                                                            thế chấp</label>
+                                                        <label class="col-sm-3 control-label col-lg-3" for="collateral"><span class="validate">*</span>Tài sản thế chấp</label>
                                                         <div class="col-lg-6">
-                                                            <select class="form-control m-bot15">
+                                                            <select id="collateral" class="form-control m-bot15">
                                                                 <option value="NhaCua">Nhà cửa</option>
                                                                 <option value="DatDai">Đất đai</option>
                                                                 <option value="HienVat">Hiện vật có giá trị (Oto, Xe
@@ -176,12 +174,10 @@
                                                                 <option value="Khac">Khác</option>
                                                             </select>
                                                         </div>
-                                                        <label for="phone" class="control-label col-lg-3"><span
-                                                                class="validate">*</span>Văn bản chứng minh quyền sở
-                                                            hữu:</label>
+                                                        <label for="proof" class="control-label col-lg-3"><span
+                                                                class="validate">*</span>Văn bản chứng minh quyền sở hữu:</label>
                                                         <div class="col-lg-6">
-                                                            <input class="padding-top-fix" type='file'
-                                                                   onchange="readURL(this);"/>
+                                                            <input id="proof" class="padding-top-fix" type='file' onchange="readURL(this);"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -196,20 +192,17 @@
                                                 </div>
                                                 <div class="form-group ">
                                                     <div class="magin-left">
-                                                        <p class="title-color"><span class="validate">*</span>Dành cho
-                                                            vay tín chấp:</p>
+                                                        <p class="title-color"><span class="validate">*</span>Dành cho vay tín chấp:</p>
                                                         <button type="button" class="btn btn-info"
-                                                                data-toggle="collapse" data-target="#drop-2">Vay tín
-                                                            chấp
+                                                                data-toggle="collapse" data-target="#drop-2">Vay tín chấp
                                                         </button>
                                                     </div>
                                                     <div id="drop-2" class="collapse">
                                                         <label class="col-sm-3 control-label col-lg-3"
-                                                               for="inputSuccess"><span class="validate">*</span>Thu
-                                                            nhập trung bình/tháng</label>
+                                                               for="salary"><span class="validate">*</span>Thu nhập trung bình/tháng</label>
                                                         <div class="col-lg-6">
                                                             <div class="input-group m-bot15 ">
-                                                                <input type="text" class="form-control" name="price"
+                                                                <input id="salary" type="text" class="form-control" name="price"
                                                                        onfocus="if(this.value==this.defaultValue)this.value='100000000';">
                                                                 <div class="input-group-btn">
                                                                     <button tabindex="-1" class="btn btn-info"
@@ -228,12 +221,9 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <label for="phone" class="control-label col-lg-3"><span
-                                                                class="validate">*</span>Văn bản chứng minh thu
-                                                            nhập:</label>
+                                                        <label for="document" class="control-label col-lg-3"><span class="validate">*</span>Văn bản chứng minh thu nhập:</label>
                                                         <div class="col-lg-6">
-                                                            <input class="padding-top-fix" type='file'
-                                                                   onchange="readURL(this);"/>
+                                                            <input id="document" class="padding-top-fix" type='file' onchange="readURL(this);"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -241,12 +231,11 @@
                                             <div class="col-sm-12 col-md-12 col-xs-12 text-center">
                                                 <div class="form-group">
                                                     <div class="form-group ">
-                                                        <label for="price" class="control-label col-lg-3 "><span
+                                                        <label for="lend-money" class="control-label col-lg-3 "><span
                                                                 class="validate">*</span>Số tiền cần vay:</label>
                                                         <div class="col-lg-6">
                                                             <div class="input-group m-bot15 price-input">
-                                                                <input type="text" class="form-control" name="price"
-                                                                       onfocus="if(this.value==this.defaultValue)this.value='100000000';">
+                                                                <input id="lend-money" type="text" class="form-control" name="price" onfocus="if(this.value==this.defaultValue)this.value='100000000';">
                                                                 <div class="input-group-btn">
                                                                     <button tabindex="-1" class="btn btn-info"
                                                                             type="button">VNĐ
