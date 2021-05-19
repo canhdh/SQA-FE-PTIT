@@ -39,13 +39,15 @@ public class UserController {
             assert customer != null;
             Module.Instance.IDCustomer = customer.getIDCustomer();
             return "/frontendhtml/customer_index";
-        } else {
+        }
+        if (myUser.getPosition().equals("staff")) {
             Staff staff = rest.getForObject(BE_ENDPOINT + "/staff/name/{username}", Staff.class, myUser.getUsername());
             model.addAttribute("staff", staff);
             assert staff != null;
             Module.Instance.IDStaff = staff.getIDStaff();
             return "/adminhtml/home";
         }
+        return "/error/404";
     }
 
     @PostMapping("/login")
