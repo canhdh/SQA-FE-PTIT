@@ -28,7 +28,15 @@ public class UserController {
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("user", new User());
-        return "/adminhtml/login";
+        return "/login";
+    }
+
+    @GetMapping("/logout")
+    public String logout(Model model) {
+        Module.Instance.IDCustomer = 0;
+        Module.Instance.IDUser = 0;
+        Module.Instance.IDStaff = 0;
+        return "redirect:/user/login";
     }
 
     @GetMapping("/home")
@@ -38,16 +46,16 @@ public class UserController {
             model.addAttribute("customer", customer);
             assert customer != null;
             Module.Instance.IDCustomer = customer.getIDCustomer();
-            return "/frontendhtml/customer_index";
+            return "customer/home_page";
         }
         if (myUser.getPosition().equals("staff")) {
             Staff staff = rest.getForObject(BE_ENDPOINT + "/staff/name/{username}", Staff.class, myUser.getUsername());
             model.addAttribute("staff", staff);
             assert staff != null;
             Module.Instance.IDStaff = staff.getIDStaff();
-            return "/adminhtml/home";
+            return "admin/home_page";
         }
-        return "/error/404";
+        return "error/404";
     }
 
     @PostMapping("/login")

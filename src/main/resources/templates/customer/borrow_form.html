@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<section id="main-content" th:fragment="borrow_form">
+    <section class="wrapper">
+        <div class="form-W3layouts">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <p class="title-header">Đơn yêu cầu vay vốn</p>
+                            <span class="tools pull-right">
+                                    <a class="fa fa-cog fa-chevron-down" href="javascript:;"></a>
+                                <!-- <a class="fa fa-times" href="javascript:;"></a> -->
+                                </span>
+                        </header>
+                        <div class="panel-body" style="display: block;">
+                            <div class="row">
+                                <div class="form">
+                                    <form class="cmxform form-horizontal " id="signupForm" method="get" action=""
+                                          novalidate="novalidate">
+                                        <div class="col-sm-12 col-md-12 col-xs-12 ">
+                                            <div class="form-group ">
+                                                <label for="firstname" class="control-label col-lg-3"><span
+                                                        class="validate">*</span>Mục đích vay vốn</label>
+                                                <div class="col-lg-6">
+                                                    <div class="compose-editor">
+                                                        <textarea class="wysihtml5 form-control" rows="9"></textarea>
+                                                        <input type="file" class="default">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-xs-12">
+                                            <div class="form-group ">
+                                                <label for="date-start" class="control-label col-lg-3"><span
+                                                        class="validate">*</span>Ngày bắt đầu vay</label>
+                                                <div class="col-lg-6">
+                                                    <input type="date" id="date-start" name="date-start">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <div class="magin-left">
+                                                    <p class="title-color"><span class="validate">*</span>Dành cho vay
+                                                        thế chấp:</p>
+                                                    <button type="button" class="btn btn-info" data-toggle="collapse"
+                                                            data-target="#drop-1">Vay thế chấp
+                                                    </button>
+                                                </div>
+                                                <div id="drop-1" class="collapse">
+                                                    <label class="col-sm-3 control-label col-lg-3"
+                                                           for="inputSuccess"><span class="validate">*</span>Tài sản thế
+                                                        chấp</label>
+                                                    <div class="col-lg-6">
+                                                        <select class="form-control m-bot15">
+                                                            <option value="">Nhà cửa</option>
+                                                            <option value="">Đất đai</option>
+                                                            <option value="">Hiện vật có giá trị (Oto, Xe máy,...)
+                                                            </option>
+                                                            <option value="">Khác</option>
+                                                        </select>
+                                                    </div>
+                                                    <label for="phone" class="control-label col-lg-3"><span
+                                                            class="validate">*</span>Văn bản chứng minh quyền sở
+                                                        hữu:</label>
+                                                    <div class="col-lg-6">
+                                                        <input class="padding-top-fix" type='file'
+                                                               onchange="readURL(this);"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6 col-xs-12 ">
+                                            <div class="form-group ">
+                                                <label for="date-end" class="control-label col-lg-3"><span
+                                                        class="validate">*</span>Dự kiến ngày trả</label>
+                                                <div class="col-lg-6">
+                                                    <input type="date" id="date-end" name="date-end">
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                <div class="magin-left">
+                                                    <p class="title-color"><span class="validate">*</span>Dành cho vay
+                                                        tín chấp:</p>
+                                                    <button type="button" class="btn btn-info" data-toggle="collapse"
+                                                            data-target="#drop-2">Vay tín chấp
+                                                    </button>
+                                                </div>
+                                                <div id="drop-2" class="collapse">
+                                                    <label class="col-sm-3 control-label col-lg-3"
+                                                           for="inputSuccess"><span class="validate">*</span>Thu nhập
+                                                        trung bình/tháng</label>
+                                                    <div class="col-lg-6">
+                                                        <div class="input-group m-bot15 ">
+                                                            <input type="text" class="form-control" name="price"
+                                                                   onfocus="if(this.value==this.defaultValue)this.value='100000000';">
+                                                            <div class="input-group-btn">
+                                                                <button tabindex="-1" class="btn btn-info"
+                                                                        type="button">VNĐ
+                                                                </button>
+                                                                <button tabindex="-1" data-toggle="dropdown"
+                                                                        class="btn btn-info dropdown-toggle"
+                                                                        type="button" aria-expanded="false">
+                                                                    <span class="caret"></span>
+                                                                </button>
+                                                                <ul role="menu" class="dropdown-menu pull-right">
+                                                                    <li><a href="#">$</a></li>
+                                                                    <li><a href="#">€</a></li>
+                                                                    <li><a href="#">¥</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <label for="phone" class="control-label col-lg-3"><span
+                                                            class="validate">*</span>Văn bản chứng minh thu
+                                                        nhập:</label>
+                                                    <div class="col-lg-6">
+                                                        <input class="padding-top-fix" type='file'
+                                                               onchange="readURL(this);"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-xs-12 text-center">
+                                            <div class="form-group">
+                                                <div class="form-group ">
+                                                    <label for="price" class="control-label col-lg-3 "><span
+                                                            class="validate">*</span>Số tiền cần vay:</label>
+                                                    <div class="col-lg-6">
+                                                        <div class="input-group m-bot15 price-input">
+                                                            <input type="text" class="form-control" name="price"
+                                                                   onfocus="if(this.value==this.defaultValue)this.value='100000000';">
+                                                            <div class="input-group-btn">
+                                                                <button tabindex="-1" class="btn btn-info"
+                                                                        type="button">VNĐ
+                                                                </button>
+                                                                <button tabindex="-1" data-toggle="dropdown"
+                                                                        class="btn btn-info dropdown-toggle"
+                                                                        type="button" aria-expanded="false">
+                                                                    <span class="caret"></span>
+                                                                </button>
+                                                                <ul role="menu" class="dropdown-menu pull-right">
+                                                                    <li><a href="#">$</a></li>
+                                                                    <li><a href="#">€</a></li>
+                                                                    <li><a href="#">¥</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary" type="submit">Gửi yêu cầu</button>
+                                                <button class="btn btn-danger" type="button">Hủy</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>
