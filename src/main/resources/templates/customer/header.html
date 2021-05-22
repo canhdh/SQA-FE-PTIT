@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<header class="header fixed-top clearfix" th:fragment="header">
+    <!--logo start-->
+    <div class="brand">
+        <div class="img-bank">
+            <img th:src="@{/images/bank.png}" alt="">
+            <a th:href="@{/index}" class="logo">
+                VIETNAMBANK
+            </a>
+        </div>
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars"></div>
+        </div>
+    </div>
+    <!--logo end-->
+    <div class="top-nav clearfix">
+        <!--search & user info start-->
+        <ul class="nav pull-right top-menu">
+            <!-- user login dropdown start-->
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" th:href="@{#}">
+                    <img alt="" th:src="@{/images/avart.png}">
+                    <span class="username" th:text="${customer.name}"></span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu extended logout">
+                    <li><a th:href="@{/user/logout}"><i class="fa fa-key"></i>Đăng xuất</a></li>
+                </ul>
+            </li>
+            <!-- user login dropdown end -->
+        </ul>
+        <!--search & user info end-->
+    </div>
+</header>
+</body>
+</html>

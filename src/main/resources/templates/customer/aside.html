@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<aside th:fragment="aside">
+    <div id="sidebar" class="nav-collapse">
+        <!-- sidebar menu start-->
+        <div class="leftside-navigation">
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a class="active" th:href="@{/user/home}">
+                        <span>Trang chủ</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a th:href="@{#}">
+                        <span> Khai báo thông tin</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a th:href="@{/customer/edit/{id}(id=${customer.IDCustomer})}">Khai báo hồ sơ</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a th:href="@{#}">
+                        <span>Vay vốn</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a th:href="@{/customer/borrow}">Thực hiện vay vốn</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a th:href="@{#}">
+                        <span> Thanh toán các khoản vay</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a th:href="@{/customer/payment}">Thanh toán</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+</body>
+</html>

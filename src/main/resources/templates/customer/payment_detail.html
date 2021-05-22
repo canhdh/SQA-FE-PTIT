@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<section id="main-content" th:fragment="payment_detail">
+    <section class="wrapper">
+        <div class="form-W3layouts">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <p class="title-header">Thông tin khoản vay</p>
+                            <span class="tools pull-right">
+                                    <a class="fa fa-cog fa-chevron-down" href="javascript:;"></a>
+                                <!-- <a class="fa fa-times" href="javascript:;"></a> -->
+                                </span>
+                        </header>
+                        <div class="panel-body" style="display: block;">
+                            <div class="form">
+                                <form class="cmxform form-horizontal " id="signupForm" method="get" action=""
+                                      novalidate="novalidate">
+                                    <div class="col-sm-6 col-md-6 col-xs-12">
+                                        <div class="form-group ">
+                                            <label for="firstname" class="control-label col-lg-3">Họ tên khách
+                                                hàng:</label>
+                                            <div class="col-lg-6">
+                                                <span class="payment-details"> Nguyễn Văn A</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="lastname" class="control-label col-lg-3">Ngày yêu cầu:</label>
+                                            <div class="col-lg-6">
+                                                <span class="payment-details">23/02/2021</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="birthday" class="control-label col-lg-3">Tình trạng:</label>
+                                            <div class="col-lg-6">
+                                                <span class="payment-details status-pending">Chưa thanh toán</span>
+                                                <!-- <span class="payment-details status-processed">Đã thanh toán</span> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="address" class="control-label col-lg-3">Ngày giải ngân:</label>
+                                            <div class="col-lg-6">
+                                                <span class="payment-details"> 15/03/2021</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="agree" class="control-label col-lg-3 col-sm-3">Thời hạn
+                                                vay:</label>
+                                            <div class="col-lg-6 col-sm-9">
+                                                <span class="payment-details">01/06/2023</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label for="phone" class="control-label col-lg-3">Thời hạn còn lại:</label>
+                                            <div class="col-lg-6">
+                                                <span class="payment-details">808 ngày</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="firstname" class="control-label col-lg-3"><span
+                                                    class="validate">*</span>Mục đích vay vốn</label>
+                                            <div class="col-lg-6">
+                                                <div class="compose-editor">
+                                                    <textarea class="wysihtml5 form-control" rows="9">Đầu tư hệ thống nhà vườn</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Số tiền
+                                                vay:</label>
+                                            <div class="col-lg-6">
+                                                <span class="payment-details">1,000,000,000 VNĐ</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Số tiền đã
+                                                thanh toán:</label>
+                                            <div class="col-lg-6">
+                                                <span class="payment-details">0 VNĐ</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Số tiền
+                                                còn lại phải thanh toán:</label>
+                                            <div class="col-lg-6">
+                                                <span class="payment-details">1,000,000,000 VNĐ</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-xs-12 text-center">
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-3 col-lg-6">
+                                                <a href="#myModal" data-toggle="modal" class="btn btn-success">
+                                                    Thanh toán
+                                                </a>
+                                                <button class="btn btn-danger" type="button">Quay loại</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- form view xác nhận thanh toán -->
+                                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                                     id="myModal" class="modal fade" style="display: none;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button aria-hidden="true" data-dismiss="modal" class="close"
+                                                        type="button">×
+                                                </button>
+                                                <h4 class="modal-title">Xác nhận thanh toán</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form role="form">
+                                                    <div class="form-group">
+                                                        <label for="name"><span class="validate">*</span>Hình thức thanh
+                                                            toán</label>
+                                                        <select class="form-control m-bot15">
+                                                            <option value="">Ngày</option>
+                                                            <option value="">Tháng</option>
+                                                            <option value="">Quý</option>
+                                                            <option value="">Năm</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="price"><span class="validate">*</span>Số tiền thanh
+                                                            toán</label>
+                                                        <input type="text" class="form-control" id="text"
+                                                               placeholder="10000000">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="price">Số tiền còn cần thanh toán</label>
+                                                        <p class="help-block">700.000.000 VNĐ</p>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"> Xem lại trước khi ấn xác nhận !
+                                                        </label>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-default">Xác nhận</button>
+                                                    <button type="button" class="btn btn-danger">Hủy</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end form view xác nhận thanh toán -->
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>

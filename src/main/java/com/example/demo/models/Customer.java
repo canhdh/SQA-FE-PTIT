@@ -16,6 +16,4 @@ public class Customer {
 	private String cmnd;
 	private String nationality;
 	private String maritalStatus;
-	
-	
 }
