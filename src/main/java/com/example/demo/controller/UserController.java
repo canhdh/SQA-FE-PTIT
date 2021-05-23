@@ -42,17 +42,17 @@ public class UserController {
     @GetMapping("/home")
     public String home(Model model) {
         if (myUser.getPosition().equals("customer")) {
-            Customer customer = rest.getForObject(BE_ENDPOINT + "/customer/name/{username}", Customer.class, myUser.getUsername());
+            Customer customer = rest.getForObject(BE_ENDPOINT + "/customer/user/{username}", Customer.class, myUser.getUsername());
             model.addAttribute("customer", customer);
             assert customer != null;
-            Module.Instance.IDCustomer = customer.getIDCustomer();
+            Module.Instance.IDCustomer = customer.getId();
             return "customer/home_page";
         }
         if (myUser.getPosition().equals("staff")) {
-            Staff staff = rest.getForObject(BE_ENDPOINT + "/staff/name/{username}", Staff.class, myUser.getUsername());
+            Staff staff = rest.getForObject(BE_ENDPOINT + "/staff/user/{username}", Staff.class, myUser.getUsername());
             model.addAttribute("staff", staff);
             assert staff != null;
-            Module.Instance.IDStaff = staff.getIDStaff();
+            Module.Instance.IDStaff = staff.getId();
             return "admin/home_page";
         }
         return "error/404";

@@ -11,7 +11,7 @@
                 <div class="panel-body" style="display: block;">
                     <div class="form">
                         <form class="cmxform form-horizontal " id="signupForm" method="post"
-                              th:action="@{/customer/update/{id}(id=${customer.IDCustomer})}"
+                              th:action="@{/customer/update/{id}(id=${customer.id})}"
                               novalidate="novalidate" th:object="${customer}">
                             <div class="col-sm-6 col-md-6 col-xs-12">
                                 <div class="form-group">
@@ -36,7 +36,7 @@
                                     <label for="birthday" class="control-label col-lg-3"><span class="validate">*</span>Ngày
                                         sinh</label>
                                     <div class="col-lg-6">
-                                        <input type="date" id="birthday" name="birthday" th:field="*{dateBorn}">
+                                        <input type="date" id="birthday" name="birthday" th:field="*{birthday}">
                                     </div>
                                 </div>
                                 <div class="form-group ">
@@ -44,7 +44,7 @@
                                         chỉ thường trú</label>
                                     <div class="col-lg-6">
                                         <input class="form-control " id="address" name="address" type="text"
-                                               placeholder="Xuân Dục-Yên Thường-Gia Lâm-Hà Nội" th:field="*{form}">
+                                               placeholder="Xuân Dục-Yên Thường-Gia Lâm-Hà Nội" th:field="*{address}">
                                     </div>
                                 </div>
                                 <div class="form-group ">
@@ -53,7 +53,7 @@
                                     <div class="col-lg-6 col-sm-9">
                                         <label class="checkbox-inline">
                                             <input type="checkbox" value="women" id="sex"
-                                                th:each="gender : ${genders}" th:text="${gender}" th:value="${gender}" th:field="*{sex}">
+                                                th:each="gender : ${genders}" th:text="${gender}" th:value="${gender}" th:field="*{gender}">
                                         </label>
                                     </div>
                                 </div>
@@ -63,7 +63,7 @@
                                     <div class="col-lg-6">
                                         <input class="form-control " id="phone" name="phone" type="text"
                                                placeholder="0981509999"
-                                               th:field="*{numberPhone}">
+                                               th:field="*{phoneNumber}">
                                     </div>
                                 </div>
                                 <div class="form-group ">
@@ -72,7 +72,7 @@
                                     <div class="col-lg-6">
                                         <input class="form-control " id="cmnd" name="cmnd" type="text"
                                                placeholder="159357486212"
-                                               th:field="*{cmnd}">
+                                               th:field="*{idCard}">
                                     </div>
                                 </div>
                             </div>
