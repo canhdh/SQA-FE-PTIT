@@ -31,25 +31,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr data-expanded="true">
-                            <td>1</td>
-                            <td>VV00001</td>
-                            <td>Nguyễn Văn A</td>
-                            <td>23/02/2021</td>
-                            <td>01/04/2021 - 01/06/2023</td>
-                            <td>Chưa thanh toán</td>
-                            <td><a href="customer_paymentborrow_details.html" class="input-group-addon">Xem chi tiết</a>
-                            </td>
-                        </tr>
-                        <tr data-expanded="true">
-                            <td>2</td>
-                            <td>VV00001</td>
-                            <td>Nguyễn Văn B</td>
-                            <td>23/02/2021</td>
-                            <td>01/05/2021 - 01/08/2023</td>
-                            <td>Chưa thanh toán</td>
-                            <td><a href="customer_paymentborrow_details.html" class="input-group-addon">Xem chi tiết</a>
-                            </td>
+                        <tr th:each="loan : ${loans}">
+                            <td><span th:text="${loan.id}"></span></td>
+                            <td><span th:text="${loan.id}"></span></td>
+                            <td><span th:text="${customer.id}"></span></td>
+                            <td><span th:text="${loan.createdDate}"></span></td>
+                            <td><span th:text="${loan.dateBegin}"></span></td>
+                            <td><span th:text="${loan.status}"></span></td>
+                            <td><a th:href="@{/customer/payment/{id}(id=${loan.id})}" class="input-group-addon">Xem chi tiết</a></td>
                         </tr>
                         </tbody>
                     </table>

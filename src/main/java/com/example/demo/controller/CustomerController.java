@@ -1,9 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.models.Loan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,10 +17,7 @@ import org.springframework.web.client.RestTemplate;
 import com.example.demo.models.Customer;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/customer")
@@ -61,21 +59,19 @@ public class CustomerController {
 
     @PostMapping("/update/{id}")
     public String updateCustomer(@PathVariable("id") int id, @Valid Customer customer, BindingResult result, Model model) {
-        customer.setIDCustomer(id);
+        customer.setId(id);
         if (result.hasErrors()) {
             return "customer/edit_customer_page";
         }
 
-        Map<String, String> params = new HashMap<String, String >();
-        params.put("id", String.valueOf(id));
         HttpEntity<Customer> entity = new HttpEntity<>(customer);
-        HttpEntity<Customer> response = rest.exchange(BE_ENDPOINT + "/customer/{id}", HttpMethod.PUT, entity, Customer.class, params);
+        HttpEntity<Customer> response = rest.exchange(BE_ENDPOINT + "/customer", HttpMethod.PUT, entity, Customer.class);
         model.addAttribute("");
         return "redirect:/user/home";
     }
 
     @GetMapping("/borrow")
-    public String showCustomerBorrow(Model model) {
+    public String showCustomerBorrow(Model model, Loan loan) {
         Customer customer = rest.getForObject(BE_ENDPOINT + "/customer/{id}", Customer.class, Module.Instance.IDCustomer);
         model.addAttribute("customer", customer);
         return "customer/borrow_page";
@@ -84,13 +80,24 @@ public class CustomerController {
     @GetMapping("/payment")
     public String ShowPay(Model model) {
         Customer customer = rest.getForObject(BE_ENDPOINT + "/customer/{id}", Customer.class, Module.Instance.IDCustomer);
+        String getLoanOfCustomer = BE_ENDPOINT + "/loan/customer/{idCustomer}";
+        Map<String, String> params = new HashMap<>();
+        params.put("idCustomer", String.valueOf(Module.Instance.IDCustomer));
+        ResponseEntity<Loan[]> customerLoans = rest.getForEntity(getLoanOfCustomer, Loan[].class, params);
+        List<Loan> loans = Arrays.asList(Objects.requireNonNull(customerLoans.getBody()));
+        model.addAttribute("loans", loans);
         model.addAttribute("customer", customer);
         return "customer/payment_page";
     }
 
-    @GetMapping("/paymentDetail")
-    public String ShowPayDetail(Model model) {
+    @GetMapping("/payment/{paymentId}")
+    public String ShowPayDetail(@PathVariable("paymentId") int paymentId, Model model) {
         Customer customer = rest.getForObject(BE_ENDPOINT + "/customer/{id}", Customer.class, Module.Instance.IDCustomer);
+        String getLoanOfCustomer = BE_ENDPOINT + "/loan/{id}";
+        Map<String, String> params = new HashMap<>();
+        params.put("id", String.valueOf(paymentId));
+        ResponseEntity<Loan> loan = rest.getForEntity(getLoanOfCustomer, Loan.class, params);
+        model.addAttribute("loan", loan.getBody());
         model.addAttribute("customer", customer);
         return "customer/payment_detail_page";
     }

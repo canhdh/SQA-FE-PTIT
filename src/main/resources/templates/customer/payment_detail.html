@@ -20,74 +20,75 @@
                                       novalidate="novalidate">
                                     <div class="col-sm-6 col-md-6 col-xs-12">
                                         <div class="form-group ">
-                                            <label for="firstname" class="control-label col-lg-3">Họ tên khách
+                                            <label for="customerName" class="control-label col-lg-3">Họ tên khách
                                                 hàng:</label>
-                                            <div class="col-lg-6">
-                                                <span class="payment-details"> Nguyễn Văn A</span>
+                                            <div class="col-lg-6" id="customerName">
+                                                <span class="payment-details" th:text="${loan.idCustomer}"></span>
                                             </div>
                                         </div>
                                         <div class="form-group ">
-                                            <label for="lastname" class="control-label col-lg-3">Ngày yêu cầu:</label>
-                                            <div class="col-lg-6">
-                                                <span class="payment-details">23/02/2021</span>
+                                            <label for="createdDate" class="control-label col-lg-3">Ngày yêu cầu:</label>
+                                            <div class="col-lg-6" id="createdDate">
+                                                <span class="payment-details" th:text="${loan.createdDate}"></span>
                                             </div>
                                         </div>
                                         <div class="form-group ">
-                                            <label for="birthday" class="control-label col-lg-3">Tình trạng:</label>
-                                            <div class="col-lg-6">
-                                                <span class="payment-details status-pending">Chưa thanh toán</span>
+                                            <label for="status" class="control-label col-lg-3">Tình trạng:</label>
+                                            <div class="col-lg-6" id="status">
+                                                <span class="payment-details status-pending" th:text="${loan.status}"></span>
                                                 <!-- <span class="payment-details status-processed">Đã thanh toán</span> -->
                                             </div>
                                         </div>
                                         <div class="form-group ">
                                             <label for="address" class="control-label col-lg-3">Ngày giải ngân:</label>
                                             <div class="col-lg-6">
-                                                <span class="payment-details"> 15/03/2021</span>
+                                                <span class="payment-details">Not supported</span>
                                             </div>
                                         </div>
                                         <div class="form-group ">
-                                            <label for="agree" class="control-label col-lg-3 col-sm-3">Thời hạn
+                                            <label for="exceptedPaymentDate" class="control-label col-lg-3 col-sm-3">Thời hạn
                                                 vay:</label>
-                                            <div class="col-lg-6 col-sm-9">
-                                                <span class="payment-details">01/06/2023</span>
+                                            <div class="col-lg-6 col-sm-9" id="exceptedPaymentDate">
+                                                <span class="payment-details" th:text="${exceptedPaymentDate}"></span>
                                             </div>
                                         </div>
                                         <div class="form-group ">
                                             <label for="phone" class="control-label col-lg-3">Thời hạn còn lại:</label>
                                             <div class="col-lg-6">
-                                                <span class="payment-details">808 ngày</span>
+                                                <span class="payment-details">Not supported</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-6 col-xs-12">
                                         <div class="form-group">
-                                            <label for="firstname" class="control-label col-lg-3"><span
+                                            <label for="purpose" class="control-label col-lg-3"><span
                                                     class="validate">*</span>Mục đích vay vốn</label>
                                             <div class="col-lg-6">
                                                 <div class="compose-editor">
-                                                    <textarea class="wysihtml5 form-control" rows="9">Đầu tư hệ thống nhà vườn</textarea>
+                                                    <textarea class="wysihtml5 form-control" rows="9" th:text="${loan.purpose}"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Số tiền
+                                            <label class="col-sm-3 control-label col-lg-3" for="loanAmount">Số tiền
                                                 vay:</label>
-                                            <div class="col-lg-6">
-                                                <span class="payment-details">1,000,000,000 VNĐ</span>
+                                            <div class="col-lg-6" id="loanAmount">
+                                                <span class="payment-details" th:text="${loan.loanAmount}"></span>
+                                                <span >VND</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Số tiền đã
                                                 thanh toán:</label>
                                             <div class="col-lg-6">
-                                                <span class="payment-details">0 VNĐ</span>
+                                                <span class="payment-details">not supported</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Số tiền
                                                 còn lại phải thanh toán:</label>
                                             <div class="col-lg-6">
-                                                <span class="payment-details">1,000,000,000 VNĐ</span>
+                                                <span class="payment-details">not supported</span>
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +98,7 @@
                                                 <a href="#myModal" data-toggle="modal" class="btn btn-success">
                                                     Thanh toán
                                                 </a>
-                                                <button class="btn btn-danger" type="button">Quay loại</button>
+                                                <button class="btn btn-danger" type="button">Quay lại</button>
                                             </div>
                                         </div>
                                     </div>
