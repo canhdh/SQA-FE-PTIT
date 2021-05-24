@@ -3275,10 +3275,19 @@ p.title-color {
     line-height: 36px;
 }
 .status-pending {
+    background-color: lightblue;
+    padding: 5px;
+}
+.status-processing {
     background-color: yellow;
     padding: 5px;
 }
-.status-processed {
+
+.status-paid {
     background-color: rgb(16, 201, 41);
     padding: 5px;
+}
+
+#error-message, #button-back-to-home-page {
+    color: #2a2727 !important;
 }

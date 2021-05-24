@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VIETNAMBANK - Chi tiết khoản vay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+        Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- bootstrap-css -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- //bootstrap-css -->
+    <!-- Custom CSS -->
+    <link th:href="@{/css/admin-style.css}" rel='stylesheet' type='text/css'/>
+    <link th:href="@{/css/admin-style-responsive.css}" rel="stylesheet"/>
+    <!-- font CSS -->
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" th:href="@{/css/font.css}" type="text/css"/>
+    <link th:href="@{/css/font-awesome.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/morris.css}" type="text/css"/>
+    <!-- calendar -->
+    <link rel="stylesheet" th:href="@{/css/monthly.css}">
+    <!-- //calendar -->
+    <!-- //font-awesome icons -->
+    <script th:src="@{/js/jquery2.0.3.min.js}"></script>
+    <script th:src="@{/js/raphael-min.js}"></script>
+    <script th:src="@{/js/morris.js}"></script>
+</head>
+<body>
+<section id="container">
+    <header th:replace="admin/header :: header"></header>
+
+    <aside th:replace="admin/aside :: aside"></aside>
+
+    <section th:replace="admin/loans_profile_details :: profile_details">
+    </section>
+</section>
+
+<script th:src="@{/js/bootstrap.js}"></script>
+<script th:src="@{/js/jquery.dcjqaccordion.2.7.js}"></script>
+<script th:src="@{/js/scripts.js}"></script>
+<script th:src="@{/js/jquery.slimscroll.js}"></script>
+<script th:src="@{/js/jquery.nicescroll.js}"></script>
+<![endif]-->
+<script th:src="@{/js/jquery.scrollTo.js}"></script>
+<script type="text/javascript">
+    // <![CDATA[  <-- For SVG support
+    if ('WebSocket' in window) {
+        (function () {
+            function refreshCSS() {
+                var sheets = [].slice.call(document.getElementsByTagName("link"));
+                var head = document.getElementsByTagName("head")[0];
+                for (var i = 0; i < sheets.length; ++i) {
+                    var elem = sheets[i];
+                    var parent = elem.parentElement || head;
+                    parent.removeChild(elem);
+                    var rel = elem.rel;
+                    if (elem.href && typeof rel != "string" || rel.length === 0 || rel.toLowerCase() === "stylesheet") {
+                        var url = elem.href.replace(/([&?])_cacheOverride=\d+/, '');
+                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                    }
+                    parent.appendChild(elem);
+                }
+            }
+
+            var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+            var address = protocol + window.location.host + window.location.pathname + '/ws';
+            var socket = new WebSocket(address);
+            socket.onmessage = function (msg) {
+                if (msg.data === 'reload') window.location.reload();
+                else if (msg.data === 'refreshcss') refreshCSS();
+            };
+            if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                console.log('Live reload enabled.');
+                sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+            }
+        })();
+    } else {
+        console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+    }
+    // ]]>
+</script>
+<script>
+    $(function () {
+        $.fn.limit = function ($n) {
+            this.each(function () {
+                var allText = $(this).html();
+                var tLength = $(this).html().length;
+                var startText = allText.slice(0, $n);
+                if (tLength >= $n) {
+                    $(this).html(startText + '...');
+                } else {
+                    $(this).html(startText);
+                }
+            });
+
+            return this;
+        }
+        $('.list li a').limit(25);
+    });
+</script>
+</body>
+</html>

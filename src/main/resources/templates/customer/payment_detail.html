@@ -34,8 +34,10 @@
                                         </div>
                                         <div class="form-group ">
                                             <label for="status" class="control-label col-lg-3">Tình trạng:</label>
-                                            <div class="col-lg-6" id="status">
-                                                <span class="payment-details status-pending" th:text="${loan.status}"></span>
+                                            <div class="col-lg-6" id="status" th:switch="${loan.status}">
+                                                <span class="payment-details status-pending" th:case="1">Đang chờ duyệt</span>
+                                                <span class="payment-details status-processing" th:case="2">Chưa thanh toán</span>
+                                                <span class="payment-details status-paid" th:case="3">Đã thanh toán</span>
                                                 <!-- <span class="payment-details status-processed">Đã thanh toán</span> -->
                                             </div>
                                         </div>
@@ -142,7 +144,7 @@
                                                         </label>
                                                     </div>
                                                     <button type="submit" class="btn btn-default">Xác nhận</button>
-                                                    <button type="button" class="btn btn-danger">Hủy</button>
+                                                    <button onclick='window.history.back()' type="button" class="btn btn-danger">Hủy</button>
                                                 </form>
                                             </div>
                                         </div>

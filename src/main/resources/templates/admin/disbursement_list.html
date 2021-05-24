@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<section id="main-content" th:fragment="disbursement_list">
+    <section class="wrapper">
+        <header class="panel-heading wht-bg">
+            <h4 class="gen-case">
+                Giải ngân
+            </h4>
+        </header>
+        <div class="panel panel-default">
+            <div class="panel-heading" th:replace="admin/search_box :: search_box"></div>
+            <div>
+                <table class="table" ui-jq="footable" ui-options='{
+                            "paging": {
+                            "enabled": true
+                            },
+                            "filtering": {
+                            "enabled": true
+                            },
+                            "sorting": {
+                            "enabled": true
+                            }}'>
+                    <thead>
+                    <tr>
+                        <th data-breakpoints="xs">ID</th>
+                        <th>Mã yêu cầu</th>
+                        <th>Tên khách hàng</th>
+                        <th>Số tiền vay</th>
+                        <th>Thời hạn vay</th>
+                        <th>Số tiền đã giải ngân</th>
+                        <th>Số tiền chưa giải ngân</th>
+                        <th>Tùy chọn</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-expanded="true">
+                        <td>1</td>
+                        <td>VV00001</td>
+                        <td>Nguyễn Văn A</td>
+                        <td>1,000,000,000 VND</td>
+                        <td>01/06/2023</td>
+                        <td>300,000,000 VND</td>
+                        <td>700,000,000 VND</td>
+                        <td><a href="confirm_disbursement.html" class="input-group-addon">Giải ngân</a></td>
+                    </tr>
+                    <tr data-expanded="true">
+                        <td>2</td>
+                        <td>VV00001</td>
+                        <td>Nguyễn Văn B</td>
+                        <td>1,000,000,000 VND</td>
+                        <td>01/06/2023</td>
+                        <td>300,000,000 VND</td>
+                        <td>700,000,000 VND</td>
+                        <td><a href="confirm_disbursement.html" class="input-group-addon">Giải ngân</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>
