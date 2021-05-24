@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.LoanDTO;
 import com.example.demo.models.Loan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -83,8 +84,8 @@ public class CustomerController {
         String getLoanOfCustomer = BE_ENDPOINT + "/loan/customer/{idCustomer}";
         Map<String, String> params = new HashMap<>();
         params.put("idCustomer", String.valueOf(Module.Instance.IDCustomer));
-        ResponseEntity<Loan[]> customerLoans = rest.getForEntity(getLoanOfCustomer, Loan[].class, params);
-        List<Loan> loans = Arrays.asList(Objects.requireNonNull(customerLoans.getBody()));
+        ResponseEntity<LoanDTO[]> customerLoans = rest.getForEntity(getLoanOfCustomer, LoanDTO[].class, params);
+        List<LoanDTO> loans = Arrays.asList(Objects.requireNonNull(customerLoans.getBody()));
         model.addAttribute("loans", loans);
         model.addAttribute("customer", customer);
         return "customer/payment_page";

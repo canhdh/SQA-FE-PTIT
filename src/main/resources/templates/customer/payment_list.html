@@ -32,12 +32,16 @@
                         </thead>
                         <tbody>
                         <tr th:each="loan : ${loans}">
+                            <td><span th:text="${loanStat.index}"></span></td>
                             <td><span th:text="${loan.id}"></span></td>
-                            <td><span th:text="${loan.id}"></span></td>
-                            <td><span th:text="${customer.id}"></span></td>
+                            <td><span th:text="${loan.customer.name}"></span></td>
                             <td><span th:text="${loan.createdDate}"></span></td>
                             <td><span th:text="${loan.dateBegin}"></span></td>
-                            <td><span th:text="${loan.status}"></span></td>
+                            <td th:switch="${loan.status}">
+                                <span th:case="1">Đang chờ duyệt</span>
+                                <span th:case="2">Chưa thanh toán</span>
+                                <span th:case="3">Đã thanh toán</span>
+                            </td>
                             <td><a th:href="@{/customer/payment/{id}(id=${loan.id})}" class="input-group-addon">Xem chi tiết</a></td>
                         </tr>
                         </tbody>

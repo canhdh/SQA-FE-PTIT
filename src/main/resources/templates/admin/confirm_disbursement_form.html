@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">w
+<body>
+<section id="main-content" th:fragment="content">
+    <section class="wrapper">
+        <div class="typo-agile">
+            <header class="panel-heading wht-bg">
+                <h4 class="gen-case">
+                    Xác thực thông tin
+                </h4>
+            </header>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 profile-loans">
+                <div class="image-profile">
+                    <img th:src="@{/images/avart.png}" alt="avart.png">
+                </div>
+                <div class="stats-body">
+                    <ul class="list-unstyled left-details-more">
+                        <li>Họ tên khách hàng: <span class="pull-right detal-profile">Nguyễn Văn A</span>
+                        </li>
+                        <li>Ngày sinh: <span class="pull-right detal-profile">23/07/1992</span>
+                        </li>
+                        <li>Địa chỉ: <span class="pull-right detal-profile">Hà Nội</span>
+                        </li>
+                        <li>Email: <span class="pull-right detal-profile">nguyenvana@gmail.com</span>
+                        </li>
+                        <li>Số điện thoại: <span class="pull-right detal-profile">0123456789</span>
+                        </li>
+                        <li class="last">Số CMND/CCCD <span class="pull-right detal-profile">001000981445</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 profile-loans">
+                <div class="stats-body">
+                    <ul class="list-unstyled right-details list">
+                        <li>Mã yêu cầu: <span class="pull-right detal-profile">VV00001</span>
+                        </li>
+                        <li>Ngày yêu cầu: <span class="pull-right detal-profile">23/02/2021</span>
+                        </li>
+                        <li>Mục đích vay vốn: <span class="pull-right detal-profile">Đầu tư hệ thống nhà vườn</span>
+                        </li>
+                        <li>Số tiền cần vay: <span class="pull-right detal-profile">1,000,000,000 VND</span>
+                        </li>
+                        <li>Thời hạn vay: <span class="pull-right detal-profile">01/06/2023</span>
+                        </li>
+                        <li>Số tiền đã giải ngân: <span class="pull-right detal-profile">300,000,000VND</span>
+                        </li>
+                        <li>Số tiền chữa giải ngân: <span class="pull-right detal-profile">700,000,000VND</span>
+                        </li>
+                        <li>
+                            <span style="color:red">*</span>Số tiền cần giải ngân:
+                            <select class="form-control m-bot15">
+                                <option value="50000000">50.000.000 VNĐ</option>
+                                <option value="100000000">100.000.000 VNĐ</option>
+                                <option value="500000000">500.000.000 VNĐ</option>
+                            </select>
+                            Hoặc nhập số tiền tùy chọn:
+                            <div class="input-group m-bot15">
+                                <span class="input-group-addon">VNĐ</span>
+                                <input type="text" class="form-control" value="125000000">
+                            </div>
+                </div>
+                </li>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        Xác nhận thông tin hoàn toàn chính xác
+                    </label>
+                </div>
+                </ul>
+            </div>
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center button-details">
+                <button class="btn btn-success "><i class="fa fa-check"></i> Xác nhận</button>
+                <button class="btn btn-danger"><i class="fa fa-times"></i> Từ chối</button>
+            </div>
+    </section>
+</section>
+</body>
+</html>

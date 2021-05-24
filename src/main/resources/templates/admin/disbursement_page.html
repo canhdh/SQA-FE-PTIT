@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <head>
-    <title>VIETNAMBANK - Quản lý vay</title>
+    <meta charset="UTF-8">
+    <title>VIETNAMBANK - Giải ngân</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+    <meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
         Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
@@ -35,14 +36,9 @@
 </head>
 <body>
 <section id="container">
-    <!--header start-->
     <header th:replace="admin/header :: header"></header>
-    <!--header end-->
-    <!--sidebar start-->
     <aside th:replace="admin/aside :: aside"></aside>
-    <!--sidebar end-->
-    <!--main content start-->
-    <!--main content end-->
+    <section id="main-content" th:replace="admin/disbursement_list :: disbursement_list"></section>
 </section>
 <script th:src="@{/js/bootstrap.js}"></script>
 <script th:src="@{/js/jquery.dcjqaccordion.2.7.js}"></script>
