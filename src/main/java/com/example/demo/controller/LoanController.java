@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.LoanDTO;
-import com.example.demo.models.Loan;
+import com.example.demo.models.Staff;
+import com.example.demo.service.LoanService;
+import com.example.demo.service.StaffService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -24,8 +26,16 @@ public class LoanController {
 
     private final RestTemplate rest = new RestTemplate();
 
+    private final LoanService loanService;
+    private final StaffService staffService;
+
     @Value("${backend.endpoint.url}")
     public String BE_ENDPOINT;
+
+    public LoanController(LoanService loanService, StaffService staffService) {
+        this.loanService = loanService;
+        this.staffService = staffService;
+    }
 
     @GetMapping("/customerLoans")
     public String showLoanOfCustomer(Model model) {
@@ -37,6 +47,15 @@ public class LoanController {
         System.out.println("loans:" + loans);
         model.addAttribute("loans", loans);
         return "customer/payment_page";
+    }
+
+    @GetMapping("/{id}")
+    public String showLoanDetail(@PathVariable("id") int id, Model model) {
+        LoanDTO loan = loanService.getLoanById(id);
+        Staff staff = staffService.getStaffById(Module.Instance.IDStaff);
+        model.addAttribute("staff", staff);
+        model.addAttribute("loan", loan);
+        return "admin/confirm_disbursement_page";
     }
 
     @PostMapping("/add")

@@ -37,8 +37,8 @@
 <body>
 <section id="container">
     <header th:replace="admin/header :: header"></header>
-    <aside th:replace="admin/aside :: header"></aside>
-    <section id="main-content" th:replace="admin/confirm_disbursement_content :: content">
+    <aside th:replace="admin/aside :: aside"></aside>
+    <section id="main-content" th:replace="admin/confirm_disbursement_form :: content">
     </section>
 </section>
 <script th:src="@{/js/bootstrap.js}"></script>

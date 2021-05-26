@@ -15,17 +15,17 @@
                 </div>
                 <div class="stats-body">
                     <ul class="list-unstyled left-details-more">
-                        <li>Họ tên khách hàng: <span class="pull-right detal-profile">Nguyễn Văn A</span>
+                        <li>Họ tên khách hàng: <span class="pull-right detal-profile" th:text="${loan.customer.name}"></span>
                         </li>
-                        <li>Ngày sinh: <span class="pull-right detal-profile">23/07/1992</span>
+                        <li>Ngày sinh: <span class="pull-right detal-profile" th:text="${loan.customer.birthday}"></span>
                         </li>
-                        <li>Địa chỉ: <span class="pull-right detal-profile">Hà Nội</span>
+                        <li>Địa chỉ: <span class="pull-right detal-profile" th:text="${loan.customer.address}"></span>
                         </li>
-                        <li>Email: <span class="pull-right detal-profile">nguyenvana@gmail.com</span>
+                        <li>Email: <span class="pull-right detal-profile" th:text="${loan.customer.email}"></span>
                         </li>
-                        <li>Số điện thoại: <span class="pull-right detal-profile">0123456789</span>
+                        <li>Số điện thoại: <span class="pull-right detal-profile" th:text="${loan.customer.phoneNumber}"></span>
                         </li>
-                        <li class="last">Số CMND/CCCD <span class="pull-right detal-profile">001000981445</span>
+                        <li class="last">Số CMND/CCCD <span class="pull-right detal-profile" th:text="${loan.customer.idCard}"></span>
                         </li>
                     </ul>
                 </div>
@@ -33,19 +33,19 @@
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 profile-loans">
                 <div class="stats-body">
                     <ul class="list-unstyled right-details list">
-                        <li>Mã yêu cầu: <span class="pull-right detal-profile">VV00001</span>
+                        <li>Mã yêu cầu: <span class="pull-right detal-profile" th:text="${loan.id}"></span>
                         </li>
-                        <li>Ngày yêu cầu: <span class="pull-right detal-profile">23/02/2021</span>
+                        <li>Ngày yêu cầu: <span class="pull-right detal-profile" th:text="${loan.createdDate}"></span>
                         </li>
-                        <li>Mục đích vay vốn: <span class="pull-right detal-profile">Đầu tư hệ thống nhà vườn</span>
+                        <li>Mục đích vay vốn: <span class="pull-right detal-profile" th:text="${loan.purpose}"></span>
                         </li>
-                        <li>Số tiền cần vay: <span class="pull-right detal-profile">1,000,000,000 VND</span>
+                        <li>Số tiền cần vay: <span class="pull-right detal-profile" th:text="${loan.loanAmount}"></span>
                         </li>
-                        <li>Thời hạn vay: <span class="pull-right detal-profile">01/06/2023</span>
+                        <li>Thời hạn vay: <span class="pull-right detal-profile" th:text="${loan.expectedPaymentDate}"></span>
                         </li>
-                        <li>Số tiền đã giải ngân: <span class="pull-right detal-profile">300,000,000VND</span>
+                        <li>Số tiền đã giải ngân: <span class="pull-right detal-profile" th:text="'Not supported' + 'VND'"></span>
                         </li>
-                        <li>Số tiền chữa giải ngân: <span class="pull-right detal-profile">700,000,000VND</span>
+                        <li>Số tiền chữa giải ngân: <span class="pull-right detal-profile" th:text="'Not supported' + 'VND'"></span>
                         </li>
                         <li>
                             <span style="color:red">*</span>Số tiền cần giải ngân:

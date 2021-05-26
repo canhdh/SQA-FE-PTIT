@@ -34,25 +34,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr data-expanded="true">
-                        <td>1</td>
-                        <td>VV00001</td>
-                        <td>Nguyễn Văn A</td>
-                        <td>1,000,000,000 VND</td>
-                        <td>01/06/2023</td>
-                        <td>300,000,000 VND</td>
-                        <td>700,000,000 VND</td>
-                        <td><a href="confirm_disbursement.html" class="input-group-addon">Giải ngân</a></td>
-                    </tr>
-                    <tr data-expanded="true">
-                        <td>2</td>
-                        <td>VV00001</td>
-                        <td>Nguyễn Văn B</td>
-                        <td>1,000,000,000 VND</td>
-                        <td>01/06/2023</td>
-                        <td>300,000,000 VND</td>
-                        <td>700,000,000 VND</td>
-                        <td><a href="confirm_disbursement.html" class="input-group-addon">Giải ngân</a></td>
+                    <tr data-expanded="true" th:each="loan: ${loans}">
+                        <td th:text="${loanStat.index}"></td>
+                        <td th:text="${loan.id}"></td>
+                        <td th:text="${loan.customer.name}"></td>
+                        <td th:text="${loan.loanAmount}"></td>
+                        <td th:text="${loan.expectedPaymentDate}"></td>
+                        <td th:text="'Not supported' + 'VND'"></td>
+                        <td th:text="'Not supported' + 'VND'"></td>
+                        <td><a th:href="@{/loan/{id}(id=${loan.id})}" class="input-group-addon">Giải ngân</a></td>
                     </tr>
                     </tbody>
                 </table>

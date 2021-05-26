@@ -42,7 +42,8 @@
                         <td th:text="${loan.id}"></td>
                         <td th:text="${loan.customer.name}"></td>
                         <td th:text="${loan.createdDate}"></td>
-                        <td th:text="${loan.dateBegin} + '-' + ${loan.exceptedPaymentDate}"></td>
+                        <td th:text="${loan.dateBegin} + '-' + ${loan.expectedPaymentDate
+}"></td>
                         <td th:switch="${loan.status}">
                             <span th:case="1">Đang chờ duyệt</span>
                             <span th:case="2">Chưa thanh toán</span>

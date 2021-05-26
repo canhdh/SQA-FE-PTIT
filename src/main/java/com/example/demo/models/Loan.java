@@ -10,7 +10,7 @@ public class Loan {
 	private int loanAmount;
 	private String createdDate;
 	private String dateBegin;
-	private String exceptedPaymentDate;
+	private String expectedPaymentDate;
 	private String collateral;
 	private String proofOfCollateralDocument;
 	private float income;
