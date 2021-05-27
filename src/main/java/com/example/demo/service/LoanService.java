@@ -7,5 +7,9 @@ import java.util.List;
 public interface LoanService {
     LoanDTO getLoanById(int id);
 
-    List<LoanDTO> getALlLoan();
+    List<LoanDTO> getAllLoan();
+
+    List<LoanDTO> getLoansByStatus(Integer status);
+
+    LoanDTO updateLoan(LoanDTO loanDTO);
 }

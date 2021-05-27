@@ -49,15 +49,6 @@ public class LoanController {
         return "customer/payment_page";
     }
 
-    @GetMapping("/{id}")
-    public String showLoanDetail(@PathVariable("id") int id, Model model) {
-        LoanDTO loan = loanService.getLoanById(id);
-        Staff staff = staffService.getStaffById(Module.Instance.IDStaff);
-        model.addAttribute("staff", staff);
-        model.addAttribute("loan", loan);
-        return "admin/confirm_disbursement_page";
-    }
-
     @PostMapping("/add")
     public String addLoan(@Valid LoanDTO loan, BindingResult bindingResult, Model model) {
         String addLoanUrl = BE_ENDPOINT + "/loan";
@@ -75,15 +66,35 @@ public class LoanController {
 
     @PutMapping("/update/{id}")
     public String updateLoan(@PathVariable("id") int id, @Valid LoanDTO loan, BindingResult result, Model model) {
-        String updateLoanUrl = BE_ENDPOINT + "/loan";
         loan.setId(id);
         if (result.hasErrors()) {
             return "#";
         }
 
-        HttpEntity<LoanDTO> entity = new HttpEntity<>(loan);
-        rest.exchange(updateLoanUrl, HttpMethod.PUT, entity, LoanDTO.class);
+        loanService.updateLoan(loan);
+
         return "redirect:/home/user";
     }
 
+    @GetMapping("/{id}/accept")
+    public String acceptLoan(@PathVariable("id") int id, Model model) {
+        LoanDTO loanDTO = loanService.getLoanById(id);
+        loanDTO.setStatus(2);
+        LoanDTO result = loanService.updateLoan(loanDTO);
+        Staff staff = staffService.getStaffById(Module.Instance.IDStaff);
+        model.addAttribute("staff", staff);
+        model.addAttribute("loan", result);
+        return "redirect:/staff/loanManager/" + id;
+    }
+
+    @GetMapping("/{id}/deny")
+    public String denyLoan(@PathVariable("id") int id, Model model) {
+        LoanDTO loanDTO = loanService.getLoanById(id);
+        loanDTO.setStatus(0);
+        LoanDTO result = loanService.updateLoan(loanDTO);
+        Staff staff = staffService.getStaffById(Module.Instance.IDStaff);
+        model.addAttribute("staff", staff);
+        model.addAttribute("loan", result);
+        return "redirect:/staff/loanManager/" + id;
+    }
 }

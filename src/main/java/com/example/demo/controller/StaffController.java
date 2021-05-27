@@ -5,7 +5,6 @@ import com.example.demo.models.Staff;
 import com.example.demo.service.LoanService;
 import com.example.demo.service.StaffService;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -47,7 +46,7 @@ public class StaffController {
         Staff staff = staffService.getStaffById(Module.Instance.IDStaff);
         model.addAttribute("staff", staff);
 
-        List<LoanDTO> loanDTOList = loanService.getALlLoan();
+        List<LoanDTO> loanDTOList = loanService.getAllLoan();
         model.addAttribute("loans", loanDTOList);
         return "admin/loans_profile_manager";
     }
@@ -68,14 +67,18 @@ public class StaffController {
         Staff staff = staffService.getStaffById(Module.Instance.IDStaff);
         model.addAttribute("staff", staff);
 
-        List<LoanDTO> loanDTOList = loanService.getALlLoan();
+        List<LoanDTO> loanDTOList = loanService.getAllLoan();
         model.addAttribute("loans", loanDTOList);
         return "admin/disbursement_page";
     }
 
-    @GetMapping("/makeDisbursement")
-    public String disbursementForm(Model model) {
-        return "admin/confirm_disbursement_form";
+    @GetMapping("/makeDisbursement/{id}")
+    public String showLoanDetail(@PathVariable("id") int id, Model model) {
+        LoanDTO loan = loanService.getLoanById(id);
+        Staff staff = staffService.getStaffById(Module.Instance.IDStaff);
+        model.addAttribute("staff", staff);
+        model.addAttribute("loan", loan);
+        return "admin/confirm_disbursement_page";
     }
 
     @GetMapping("/loanCheck")

@@ -42,7 +42,7 @@
                         <td th:text="${loan.expectedPaymentDate}"></td>
                         <td th:text="'Not supported' + 'VND'"></td>
                         <td th:text="'Not supported' + 'VND'"></td>
-                        <td><a th:href="@{/loan/{id}(id=${loan.id})}" class="input-group-addon">Giải ngân</a></td>
+                        <td><a th:href="@{/staff/makeDisbursement/{id}(id=${loan.id})}" class="input-group-addon">Giải ngân</a></td>
                     </tr>
                     </tbody>
                 </table>

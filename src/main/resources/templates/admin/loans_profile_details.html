@@ -57,9 +57,12 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center button-details">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center button-details" th:if="${loan.status != 2} and ${loan.status != 0}">
                 <a th:href="@{/loan/{id}/accept(id=${loan.id})}"><button class="btn btn-success "><i class="fa fa-check"></i> Xác nhận</button></a>
                 <a th:href="@{/loan/{id}/deny(id=${loan.id})}"><button class="btn btn-danger"><i class="fa fa-times"></i> Từ chối</button></a>
+            </div>
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center button-details" th:if="${loan.status == 2} or ${loan.status == 0}">
+                <a th:href="@{/staff/loanManager}"><button class="btn btn-primary"><i class="fa fa-backward"></i> Quay lại</button></a>
             </div>
         </div>
     </section>
