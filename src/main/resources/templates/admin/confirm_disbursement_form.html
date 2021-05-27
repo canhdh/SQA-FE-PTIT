@@ -65,9 +65,9 @@
                 </div>
             </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center button-details">
-                <button class="btn btn-success form-save" type="submit"><i class="fa fa-check"></i> Xác nhận</button>
+                <button class="btn btn-success form-save" type="submit" th:if="${loan.loanAmount > loan.disbursedAmount}"><i class="fa fa-check"></i> Xác nhận</button>
                 <a th:href="@{/staff/disbursement}">
-                    <button class="btn btn-danger" type="button"><i class="fa fa-times"></i>Trở về</button>
+                    <button class="btn btn-info" type="button"><i class="fa fa-times"></i>Trở về</button>
                 </a>
             </div>
         </form>
