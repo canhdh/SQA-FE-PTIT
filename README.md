@@ -3,4 +3,4 @@
 
 A demo Loan management UI uses Spring Boot + Thymeleaf
 
-Ours backend RESTful API repository: https://github.com/canhdh/SQA-FE-PTIT
+Ours backend RESTful API repository: https://github.com/canhdh/SQA-BE-PTIT
