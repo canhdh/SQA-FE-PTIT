@@ -18,6 +18,9 @@ import org.springframework.web.client.RestTemplate;
 import com.example.demo.models.Customer;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Controller
@@ -98,8 +101,30 @@ public class CustomerController {
         Map<String, String> params = new HashMap<>();
         params.put("id", String.valueOf(paymentId));
         ResponseEntity<Loan> loan = rest.getForEntity(getLoanOfCustomer, Loan.class, params);
+        model.addAttribute("remainTime", this.period(
+                        LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE),
+                        Objects.requireNonNull(loan.getBody()).getExpectedPaymentDate()));
         model.addAttribute("loan", loan.getBody());
         model.addAttribute("customer", customer);
         return "customer/payment_detail_page";
+    }
+
+    private String period(String startDate, String endDate) {
+        LocalDate start = LocalDate.parse(startDate, DateTimeFormatter.ISO_LOCAL_DATE);
+        LocalDate end = LocalDate.parse(endDate, DateTimeFormatter.ISO_LOCAL_DATE);
+
+        Period period = Period.between(start, end);
+        int years = Math.abs(period.getYears());
+        int months = Math.abs(period.getMonths());
+        int days = Math.abs(period.getDays());
+
+        return (new StringBuffer())
+                .append(years)
+                .append(" năm")
+                .append(months)
+                .append(" tháng")
+                .append(days)
+                .append(" ngày")
+                .toString();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.LoanDTO;
+import com.example.demo.models.DisbursingModel;
 import com.example.demo.models.Staff;
 import com.example.demo.service.LoanService;
 import com.example.demo.service.StaffService;
@@ -76,6 +77,7 @@ public class StaffController {
     public String showLoanDetail(@PathVariable("id") int id, Model model) {
         LoanDTO loan = loanService.getLoanById(id);
         Staff staff = staffService.getStaffById(Module.Instance.IDStaff);
+        model.addAttribute("disbursingModel", new DisbursingModel());
         model.addAttribute("staff", staff);
         model.addAttribute("loan", loan);
         return "admin/confirm_disbursement_page";

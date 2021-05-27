@@ -38,19 +38,18 @@
                         </li>
                         <li>Mục đích vay vốn: <span class="pull-right detal-profile" th:text="${loan.purpose}"></span>
                         </li>
-                        <li>Số tiền cần vay: <span class="pull-right detal-profile" th:text="${loan.loanAmount}"></span>
+                        <li>Số tiền cần vay: <span class="pull-right detal-profile" th:text="${#numbers.formatDecimal(loan.loanAmount, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
                         </li>
                         <li>Ngày bắt đầu: <span class="pull-right detal-profile" th:text="${loan.dateBegin}"></span>
                         </li>
-                        <li>Ngày kết thúc: <span class="pull-right detal-profile" th:text="${loan.expectedPaymentDate
-}"></span>
+                        <li>Ngày kết thúc: <span class="pull-right detal-profile" th:text="${loan.expectedPaymentDate}"></span>
                         </li>
                         <li>Tài sản thế chấp: <span class="pull-right detal-profile" th:text="${loan.collateral}"></span>
                         </li>
                         <li class="last" style="line-height: 20px;">Văn bản chứng minh <br> quyền sở hữu: <a href="#"
                                                                                                              class="pull-right detal-profile">Chung_minh_quyen_su_dung_dat.pdf</a>
                         </li>
-                        <li>Thu nhập trung bình tháng: <span class="pull-right detal-profile" th:text="${loan.income}"></span>
+                        <li>Thu nhập trung bình tháng: <span class="pull-right detal-profile" th:text="${#numbers.formatDecimal(loan.income, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
                         <li class="last" style="line-height: 20px;">Văn bản chứng <br> minh thu nhập: <a href="#"
                                                                                                          class="pull-right detal-profile">Sao_ke_tai_khoan_01012020-01/02/2020.pdf</a>
                         </li>

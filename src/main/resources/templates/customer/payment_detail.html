@@ -41,10 +41,10 @@
                                                 <!-- <span class="payment-details status-processed">Đã thanh toán</span> -->
                                             </div>
                                         </div>
-                                        <div class="form-group ">
-                                            <label for="address" class="control-label col-lg-3">Ngày giải ngân:</label>
-                                            <div class="col-lg-6">
-                                                <span class="payment-details">Not supported</span>
+                                        <div class="form-group " th:if="${loan.disbursementDate != null}">
+                                            <label for="disbursementDate" class="control-label col-lg-3">Ngày giải ngân:</label>
+                                            <div class="col-lg-6" id="disbursementDate">
+                                                <span class="payment-details" th:text="${loan.disbursementDate}"></span>
                                             </div>
                                         </div>
                                         <div class="form-group ">
@@ -53,14 +53,13 @@
                                                 vay:</label>
                                             <div class="col-lg-6 col-sm-9" id="expectedPaymentDate
 ">
-                                                <span class="payment-details" th:text="${expectedPaymentDate
-}"></span>
+                                                <span class="payment-details" th:text="${loan.expectedPaymentDate}"></span>
                                             </div>
                                         </div>
                                         <div class="form-group ">
-                                            <label for="phone" class="control-label col-lg-3">Thời hạn còn lại:</label>
-                                            <div class="col-lg-6">
-                                                <span class="payment-details">Not supported</span>
+                                            <label for="remain-time" class="control-label col-lg-3">Thời hạn còn lại:</label>
+                                            <div class="col-lg-6" id="remain-time">
+                                                <span class="payment-details" th:text="${remainTime}"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +68,7 @@
                                             <label for="purpose" class="control-label col-lg-3"><span
                                                     class="validate">*</span>Mục đích vay vốn</label>
                                             <div class="col-lg-6">
-                                                <div class="compose-editor">
+                                                <div class="compose-editor" id="purpose">
                                                     <textarea class="wysihtml5 form-control" rows="9" th:text="${loan.purpose}"></textarea>
                                                 </div>
                                             </div>
@@ -78,22 +77,22 @@
                                             <label class="col-sm-3 control-label col-lg-3" for="loanAmount">Số tiền
                                                 vay:</label>
                                             <div class="col-lg-6" id="loanAmount">
-                                                <span class="payment-details" th:text="${loan.loanAmount}"></span>
+                                                <span class="payment-details" th:text="${#numbers.formatDecimal(loan.loanAmount, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
                                                 <span >VND</span>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Số tiền đã
+                                            <label class="col-sm-3 control-label col-lg-3" for="paidAmount">Số tiền đã
                                                 thanh toán:</label>
-                                            <div class="col-lg-6">
-                                                <span class="payment-details">not supported</span>
+                                            <div class="col-lg-6" id="paidAmount">
+                                                <span class="payment-details" th:text="${#numbers.formatDecimal(loan.paidAmount, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label col-lg-3" for="inputSuccess">Số tiền
+                                            <label class="col-sm-3 control-label col-lg-3" for="notPaidAmount">Số tiền
                                                 còn lại phải thanh toán:</label>
-                                            <div class="col-lg-6">
-                                                <span class="payment-details">not supported</span>
+                                            <div class="col-lg-6" id="notPaidAmount">
+                                                <span class="payment-details" th:text="${#numbers.formatDecimal(loan.loanAmount - loan.paidAmount, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -122,9 +121,9 @@
                                             <div class="modal-body">
                                                 <form role="form">
                                                     <div class="form-group">
-                                                        <label for="name"><span class="validate">*</span>Hình thức thanh
+                                                        <label for="paymentType"><span class="validate">*</span>Hình thức thanh
                                                             toán</label>
-                                                        <select class="form-control m-bot15">
+                                                        <select class="form-control m-bot15" id="paymentType">
                                                             <option value="">Ngày</option>
                                                             <option value="">Tháng</option>
                                                             <option value="">Quý</option>
@@ -132,14 +131,14 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="price"><span class="validate">*</span>Số tiền thanh
+                                                        <label for="paymentAmount"><span class="validate">*</span>Số tiền thanh
                                                             toán</label>
-                                                        <input type="text" class="form-control" id="text"
+                                                        <input type="text" class="form-control" id="paymentAmount"
                                                                placeholder="10000000">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="price">Số tiền còn cần thanh toán</label>
-                                                        <p class="help-block">700.000.000 VNĐ</p>
+                                                        <label for="needPaymentAmount">Số tiền còn cần thanh toán</label>
+                                                        <p class="help-block" id="needPaymentAmount" th:text="${#numbers.formatDecimal(loan.loanAmount - loan.paidAmount, 1, 'DEFAULT', 2, 'DEFAULT')}"></p>
                                                     </div>
                                                     <div class="checkbox">
                                                         <label>

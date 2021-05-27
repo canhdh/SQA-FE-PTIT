@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.LoanDTO;
+import com.example.demo.models.DisbursingModel;
 import com.example.demo.models.Staff;
 import com.example.demo.service.LoanService;
 import com.example.demo.service.StaffService;
@@ -57,11 +58,17 @@ public class LoanController {
         }
 
         loan.setIdCustomer(Module.Instance.IDCustomer);
-        loan.setStatus(1);
-        loan.setCreatedDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         HttpEntity<LoanDTO> entity = new HttpEntity<>(loan);
         rest.exchange(addLoanUrl, HttpMethod.POST, entity, LoanDTO.class);
         return "redirect:/user/home";
+    }
+
+    @PostMapping("/disburse/{id}")
+    public String disburse(@PathVariable("id") Integer id, @Valid DisbursingModel disbursingModel, Model model) {
+        LoanDTO loanDTO = loanService.getLoanById(id);
+        loanDTO.setDisbursedAmount(loanDTO.getDisbursedAmount() + disbursingModel.getDisbursingAmount());
+        loanService.updateLoan(loanDTO);
+        return "redirect:/staff/makeDisbursement/" + id;
     }
 
     @PutMapping("/update/{id}")

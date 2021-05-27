@@ -3,7 +3,7 @@
 <body>
 <section id="main-content" th:fragment="content">
     <section class="wrapper">
-        <div class="typo-agile">
+        <form class="typo-agile" method="post" th:action="@{/loan/disburse/{id}(id=${loan.id})}" th:object="${disbursingModel}">
             <header class="panel-heading wht-bg">
                 <h4 class="gen-case">
                     Xác thực thông tin
@@ -39,40 +39,38 @@
                         </li>
                         <li>Mục đích vay vốn: <span class="pull-right detal-profile" th:text="${loan.purpose}"></span>
                         </li>
-                        <li>Số tiền cần vay: <span class="pull-right detal-profile" th:text="${loan.loanAmount}"></span>
+                        <li>Số tiền cần vay: <span class="pull-right detal-profile" th:text="${#numbers.formatDecimal(loan.loanAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></span>
                         </li>
                         <li>Thời hạn vay: <span class="pull-right detal-profile" th:text="${loan.expectedPaymentDate}"></span>
                         </li>
-                        <li>Số tiền đã giải ngân: <span class="pull-right detal-profile" th:text="'Not supported' + 'VND'"></span>
+                        <li>Số tiền đã giải ngân: <span class="pull-right detal-profile" th:text="${#numbers.formatDecimal(loan.disbursedAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></span>
                         </li>
-                        <li>Số tiền chữa giải ngân: <span class="pull-right detal-profile" th:text="'Not supported' + 'VND'"></span>
+                        <li>Số tiền chưa giải ngân: <span class="pull-right detal-profile" th:text="${#numbers.formatDecimal(loan.loanAmount - loan.disbursedAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></span>
                         </li>
-                        <li>
+                        <li th:if="${loan.loanAmount > loan.disbursedAmount}">
                             <span style="color:red">*</span>Số tiền cần giải ngân:
-                            <select class="form-control m-bot15">
-                                <option value="50000000">50.000.000 VNĐ</option>
-                                <option value="100000000">100.000.000 VNĐ</option>
-                                <option value="500000000">500.000.000 VNĐ</option>
-                            </select>
-                            Hoặc nhập số tiền tùy chọn:
+                            <td th:if="${#fields.hasErrors('disbursingAmount')}" th:errors="*{age}">Số tiền nhập không hợp lệ</td>
                             <div class="input-group m-bot15">
                                 <span class="input-group-addon">VNĐ</span>
-                                <input type="text" class="form-control" value="125000000">
+                                <input type="text" class="form-control" value="125000000" id="disbursingAmount" th:field="*{disbursingAmount}">
                             </div>
+                        </li>
+                        <div class="checkbox" th:if="${loan.loanAmount > loan.disbursedAmount}">
+                            <label>
+                                <input type="checkbox" value="">
+                                Xác nhận thông tin hoàn toàn chính xác
+                            </label>
+                        </div>
+                    </ul>
                 </div>
-                </li>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" value="">
-                        Xác nhận thông tin hoàn toàn chính xác
-                    </label>
-                </div>
-                </ul>
             </div>
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center button-details">
-                <button class="btn btn-success "><i class="fa fa-check"></i> Xác nhận</button>
-                <button class="btn btn-danger"><i class="fa fa-times"></i> Từ chối</button>
+                <button class="btn btn-success form-save" type="submit"><i class="fa fa-check"></i> Xác nhận</button>
+                <a th:href="@{/staff/disbursement}">
+                    <button class="btn btn-danger" type="button"><i class="fa fa-times"></i>Trở về</button>
+                </a>
             </div>
+        </form>
     </section>
 </section>
 </body>

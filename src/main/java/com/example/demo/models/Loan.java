@@ -4,16 +4,19 @@ import lombok.Data;
 
 @Data
 public class Loan {
-	private int id;
-	private int idCustomer;
+	private Integer id;
+	private Integer idCustomer;
 	private String purpose;
-	private int loanAmount;
+	private Double loanAmount;
 	private String createdDate;
 	private String dateBegin;
 	private String expectedPaymentDate;
 	private String collateral;
 	private String proofOfCollateralDocument;
-	private float income;
+	private Double income;
 	private String proofOfIncomeDocument;
-	private int status;
+	private Integer status;
+	private Double disbursedAmount;
+	private String disbursementDate;
+	private Double paidAmount;
 }

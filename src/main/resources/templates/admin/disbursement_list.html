@@ -38,10 +38,10 @@
                         <td th:text="${loanStat.index}"></td>
                         <td th:text="${loan.id}"></td>
                         <td th:text="${loan.customer.name}"></td>
-                        <td th:text="${loan.loanAmount}"></td>
+                        <td th:text="${#numbers.formatDecimal(loan.loanAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></td>
                         <td th:text="${loan.expectedPaymentDate}"></td>
-                        <td th:text="'Not supported' + 'VND'"></td>
-                        <td th:text="'Not supported' + 'VND'"></td>
+                        <td th:text="${#numbers.formatDecimal(loan.disbursedAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></td>
+                        <td th:text="${#numbers.formatDecimal(loan.loanAmount - loan.disbursedAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></td>
                         <td><a th:href="@{/staff/makeDisbursement/{id}(id=${loan.id})}" class="input-group-addon">Giải ngân</a></td>
                     </tr>
                     </tbody>
