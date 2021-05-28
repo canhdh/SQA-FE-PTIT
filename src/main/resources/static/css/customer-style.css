@@ -3276,16 +3276,31 @@ p.title-color {
 }
 .status-pending {
     background-color: lightblue;
-    padding: 5px;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-weight: bold;
 }
 .status-processing {
     background-color: yellow;
-    padding: 5px;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-weight: bold;
 }
 
 .status-paid {
-    background-color: rgb(16, 201, 41);
-    padding: 5px;
+    background-color: rgba(16, 201, 41, 0.8);
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+.status-deny {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-weight: bold;
 }
 
 #error-message, #button-back-to-home-page {

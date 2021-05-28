@@ -120,9 +120,9 @@ public class CustomerController {
 
         return (new StringBuffer())
                 .append(years)
-                .append(" năm")
+                .append(" năm ")
                 .append(months)
-                .append(" tháng")
+                .append(" tháng ")
                 .append(days)
                 .append(" ngày")
                 .toString();
