@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.ptit.sqa.loan_management_system.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

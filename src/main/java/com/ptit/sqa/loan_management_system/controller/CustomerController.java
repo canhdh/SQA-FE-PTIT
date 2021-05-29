@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.ptit.sqa.loan_management_system.controller;
 
-import com.example.demo.dto.LoanDTO;
-import com.example.demo.models.Loan;
+import com.ptit.sqa.loan_management_system.dto.LoanDTO;
+import com.ptit.sqa.loan_management_system.model.Loan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.demo.models.Customer;
+import com.ptit.sqa.loan_management_system.model.Customer;
 
 import javax.validation.Valid;
 import java.time.LocalDate;

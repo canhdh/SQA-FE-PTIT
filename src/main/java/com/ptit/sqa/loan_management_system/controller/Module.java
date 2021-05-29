@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.ptit.sqa.loan_management_system.controller;
 
 public class Module {
 	public static Module Instance; 

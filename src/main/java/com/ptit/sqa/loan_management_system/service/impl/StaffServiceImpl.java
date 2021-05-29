@@ -1,8 +1,8 @@
-package com.example.demo.service.impl;
+package com.ptit.sqa.loan_management_system.service.impl;
 
-import com.example.demo.controller.Module;
-import com.example.demo.models.Staff;
-import com.example.demo.service.StaffService;
+import com.ptit.sqa.loan_management_system.controller.Module;
+import com.ptit.sqa.loan_management_system.model.Staff;
+import com.ptit.sqa.loan_management_system.service.StaffService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

@@ -1,7 +1,7 @@
-package com.example.demo.service.impl;
+package com.ptit.sqa.loan_management_system.service.impl;
 
-import com.example.demo.dto.LoanDTO;
-import com.example.demo.service.LoanService;
+import com.ptit.sqa.loan_management_system.dto.LoanDTO;
+import com.ptit.sqa.loan_management_system.service.LoanService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;

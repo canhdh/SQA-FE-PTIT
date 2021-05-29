@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.ptit.sqa.loan_management_system.controller;
 
-import com.example.demo.models.Customer;
-import com.example.demo.models.Staff;
-import com.example.demo.models.User;
+import com.ptit.sqa.loan_management_system.model.Customer;
+import com.ptit.sqa.loan_management_system.model.Staff;
+import com.ptit.sqa.loan_management_system.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

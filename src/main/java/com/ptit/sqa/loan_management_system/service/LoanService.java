@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.ptit.sqa.loan_management_system.service;
 
-import com.example.demo.dto.LoanDTO;
+import com.ptit.sqa.loan_management_system.dto.LoanDTO;
 
 import java.util.List;
 

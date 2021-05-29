@@ -1,7 +1,6 @@
-package com.example.demo.dto;
+package com.ptit.sqa.loan_management_system.dto;
 
-import com.example.demo.models.Customer;
-import lombok.Builder;
+import com.ptit.sqa.loan_management_system.model.Customer;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,10 +1,10 @@
-package com.example.demo.controller;
+package com.ptit.sqa.loan_management_system.controller;
 
-import com.example.demo.dto.LoanDTO;
-import com.example.demo.models.DisbursingModel;
-import com.example.demo.models.Staff;
-import com.example.demo.service.LoanService;
-import com.example.demo.service.StaffService;
+import com.ptit.sqa.loan_management_system.dto.LoanDTO;
+import com.ptit.sqa.loan_management_system.model.DisbursingModel;
+import com.ptit.sqa.loan_management_system.model.Staff;
+import com.ptit.sqa.loan_management_system.service.LoanService;
+import com.ptit.sqa.loan_management_system.service.StaffService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Controller
