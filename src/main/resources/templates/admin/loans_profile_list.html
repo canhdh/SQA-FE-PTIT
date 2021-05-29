@@ -27,7 +27,7 @@
                             }}'>
                     <thead>
                     <tr>
-                        <th data-breakpoints="xs">ID</th>
+                        <th data-breakpoints="xs">STT</th>
                         <th>Mã yêu cầu</th>
                         <th>Tên khách hàng</th>
                         <th>Ngày yêu cầu</th>
@@ -42,16 +42,14 @@
                         <td th:text="${loan.id}"></td>
                         <td th:text="${loan.customer.name}"></td>
                         <td th:text="${loan.createdDate}"></td>
-                        <td th:text="${loan.dateBegin} + '-' + ${loan.expectedPaymentDate
-}"></td>
+                        <td th:text="${loan.dateBegin} + ' đến ' + ${loan.expectedPaymentDate}"></td>
                         <td th:switch="${loan.status}">
                             <span th:case="0">Đã từ chối</span>
                             <span th:case="1">Đang chờ duyệt</span>
                             <span th:case="2">Đã duyệt</span>
                             <span th:case="3">Đã thanh toán</span>
                         </td>
-                        <td><a th:href="@{loanManager/{id}(id=${loan.id})}" class="input-group-addon">Xem chi tiết</a>
-                        </td>
+                        <td><a th:href="@{loanManager/{id}(id=${loan.id})}" class="input-group-addon">Xem chi tiết</a></td>
                     </tr>
                     </tbody>
                 </table>

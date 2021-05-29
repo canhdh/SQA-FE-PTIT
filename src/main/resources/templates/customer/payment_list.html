@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-<section id="container">
-    <section id="main-content" th:fragment="payment_list">
+<section id="container" th:fragment="payment_list">
+    <section id="main-content">
         <section class="wrapper">
             <header class="panel-heading">
                 <p class="title-header">Thanh toán khoản vay</p>
@@ -21,7 +21,7 @@
                             }}'>
                         <thead>
                         <tr>
-                            <th data-breakpoints="xs">ID</th>
+                            <th data-breakpoints="xs">STT</th>
                             <th>Mã yêu cầu</th>
                             <th>Tên khách hàng</th>
                             <th>Ngày yêu cầu</th>
@@ -32,7 +32,7 @@
                         </thead>
                         <tbody>
                         <tr th:each="loan : ${loans}">
-                            <td><span th:text="${loanStat.index}"></span></td>
+                            <td><span th:text="${loanStat.index + 1}"></span></td>
                             <td><span th:text="${loan.id}"></span></td>
                             <td><span th:text="${loan.customer.name}"></span></td>
                             <td><span th:text="${loan.createdDate}"></span></td>

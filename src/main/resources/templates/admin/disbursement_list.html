@@ -23,25 +23,25 @@
                             }}'>
                     <thead>
                     <tr>
-                        <th data-breakpoints="xs">ID</th>
-                        <th>Mã yêu cầu</th>
-                        <th>Tên khách hàng</th>
-                        <th>Số tiền vay</th>
-                        <th>Thời hạn vay</th>
-                        <th>Số tiền đã giải ngân</th>
-                        <th>Số tiền chưa giải ngân</th>
-                        <th>Tùy chọn</th>
+                        <th data-breakpoints="xs">STT</th>
+                        <th class="text-center">Mã yêu cầu</th>
+                        <th class="text-center">Tên khách hàng</th>
+                        <th class="text-center">Số tiền vay</th>
+                        <th class="text-center">Thời hạn vay</th>
+                        <th class="text-center">Số tiền đã giải ngân</th>
+                        <th class="text-center">Số tiền chưa giải ngân</th>
+                        <th class="text-center">Tùy chọn</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr data-expanded="true" th:each="loan: ${loans}">
-                        <td th:text="${loanStat.index}"></td>
-                        <td th:text="${loan.id}"></td>
-                        <td th:text="${loan.customer.name}"></td>
-                        <td th:text="${#numbers.formatDecimal(loan.loanAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></td>
-                        <td th:text="${loan.expectedPaymentDate}"></td>
-                        <td th:text="${#numbers.formatDecimal(loan.disbursedAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></td>
-                        <td th:text="${#numbers.formatDecimal(loan.loanAmount - loan.disbursedAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></td>
+                        <td class="text-left"th:text="${loanStat.index + 1}"></td>
+                        <td class="text-left" th:text="${loan.id}"></td>
+                        <td class="text-left"th:text="${loan.customer.name}"></td>
+                        <td class="text-right" th:text="${#numbers.formatDecimal(loan.loanAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></td>
+                        <td class="text-center" th:text="${loan.expectedPaymentDate}"></td>
+                        <td class="text-right" th:text="${#numbers.formatDecimal(loan.disbursedAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></td>
+                        <td class="text-right" th:text="${#numbers.formatDecimal(loan.loanAmount - loan.disbursedAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></td>
                         <td><a th:href="@{/staff/makeDisbursement/{id}(id=${loan.id})}" class="input-group-addon">Giải ngân</a></td>
                     </tr>
                     </tbody>
