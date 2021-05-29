@@ -1,8 +1,11 @@
 package com.ptit.sqa.loan_management_system.controller;
 
 import com.ptit.sqa.loan_management_system.dto.LoanDTO;
+import com.ptit.sqa.loan_management_system.model.Customer;
 import com.ptit.sqa.loan_management_system.model.DisbursingModel;
+import com.ptit.sqa.loan_management_system.model.Payment;
 import com.ptit.sqa.loan_management_system.model.Staff;
+import com.ptit.sqa.loan_management_system.service.CustomerService;
 import com.ptit.sqa.loan_management_system.service.LoanService;
 import com.ptit.sqa.loan_management_system.service.StaffService;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,13 +30,15 @@ public class LoanController {
 
     private final LoanService loanService;
     private final StaffService staffService;
+    private final CustomerService customerService;
 
     @Value("${backend.endpoint.url}")
     public String BE_ENDPOINT;
 
-    public LoanController(LoanService loanService, StaffService staffService) {
+    public LoanController(LoanService loanService, StaffService staffService, CustomerService customerService) {
         this.loanService = loanService;
         this.staffService = staffService;
+        this.customerService = customerService;
     }
 
     @GetMapping("/customerLoans")
@@ -101,5 +106,17 @@ public class LoanController {
         model.addAttribute("staff", staff);
         model.addAttribute("loan", result);
         return "redirect:/staff/loanManager/" + id;
+    }
+
+    @PostMapping("/pay/{id}")
+    public String payLoan(@PathVariable("id") Integer id, Payment payment, Model model) {
+        LoanDTO loanDTO = loanService.getLoanById(id);
+        if (loanDTO.getPaidAmount() + payment.getPaymentAmount() >= loanDTO.getLoanAmount()) {
+            loanDTO.setStatus(3);
+        }
+        loanDTO.setPaidAmount(loanDTO.getPaidAmount() + payment.getPaymentAmount());
+        LoanDTO result = loanService.updateLoan(loanDTO);
+        model.addAttribute("loan", result);
+        return "redirect:/customer/payment/" + id;
     }
 }

@@ -100,19 +100,21 @@
                                                 còn lại phải thanh toán:</label>
                                             <div class="col-lg-6" id="notPaidAmount">
                                                 <span class="payment-details"
-                                                      th:text="${#numbers.formatDecimal(loan.loanAmount - loan.paidAmount, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
+                                                      th:text="${#numbers.formatDecimal(loan.loanAmount - loan.paidAmount, 1, 'DEFAULT', 2, 'DEFAULT')} + ' VND'"></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-12 col-xs-12 text-center">
                                         <div class="form-group">
                                             <div class="col-lg-offset-3 col-lg-6">
-                                                <a href="#myModal" data-toggle="modal" class="btn btn-success">
+                                                <a th:if="${loan.status == 2}" href="#myModal" data-toggle="modal" class="btn btn-success">
                                                     Thanh toán
                                                 </a>
-                                                <button onclick="window.history.back()" class="btn btn-danger"
-                                                        type="button">Quay lại
-                                                </button>
+                                                <a th:href="@{/customer/payment}">
+                                                    <button class="btn btn-danger"
+                                                            type="button">Quay lại
+                                                    </button>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -129,7 +131,8 @@
                                                 <h4 class="modal-title">Xác nhận thanh toán</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <form role="form">
+                                                <form role="form" th:action="@{/loan/pay/{id}(id=${loan.id})}"
+                                                      th:object="${payment}" method="post">
                                                     <div class="form-group">
                                                         <label for="paymentType"><span class="validate">*</span>Hình
                                                             thức thanh
@@ -146,7 +149,7 @@
                                                             tiền thanh
                                                             toán</label>
                                                         <input type="text" class="form-control" id="paymentAmount"
-                                                               placeholder="10000000">
+                                                               th:field="*{paymentAmount}">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="needPaymentAmount">Số tiền còn cần thanh
@@ -160,8 +163,8 @@
                                                         </label>
                                                     </div>
                                                     <button type="submit" class="btn btn-default">Xác nhận</button>
-                                                    <button type="button" class="btn btn-danger"
-                                                            onclick="close_dialog()">Hủy
+                                                    <button type="button" class="btn btn-danger" aria-hidden="true"
+                                                            data-dismiss="modal">Hủy
                                                     </button>
                                                 </form>
                                             </div>
@@ -177,10 +180,5 @@
         </div>
     </section>
 </section>
-<script>
-    function close_dialog() {
-        $("#myModal").hide();
-    }
-</script>
 </body>
 </html>

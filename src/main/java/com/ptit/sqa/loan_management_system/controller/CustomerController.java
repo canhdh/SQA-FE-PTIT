@@ -2,6 +2,7 @@ package com.ptit.sqa.loan_management_system.controller;
 
 import com.ptit.sqa.loan_management_system.dto.LoanDTO;
 import com.ptit.sqa.loan_management_system.model.Loan;
+import com.ptit.sqa.loan_management_system.model.Payment;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -106,6 +107,7 @@ public class CustomerController {
                         Objects.requireNonNull(loan.getBody()).getExpectedPaymentDate()));
         model.addAttribute("loan", loan.getBody());
         model.addAttribute("customer", customer);
+        model.addAttribute("payment", new Payment());
         return "customer/payment_detail_page";
     }
 
